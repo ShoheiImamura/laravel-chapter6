@@ -35,7 +35,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         $gate->define('user-access', new UserAccess());
-        //
+        // before メソッドの第１引数には Illuminate\contracts\Auth\authenticatable のインスタンス
+        // 第二引数には この後に実行される認可処理名
         $gate->before(function (Authenticatable $user, $ability) use ($logger) {
             $logger->info($ability, [
                     'user_id' => $user->getAuthIdentifier()

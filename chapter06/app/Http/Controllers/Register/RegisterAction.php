@@ -20,5 +20,6 @@ final class RegisterAction extends Controller
     public function __invoke(Factory $factory): RedirectResponse
     {
         return $factory->driver('amazon')->redirect();
+        // または、 \Socialite::driver('amazon')->redirect(); として利用できる
     }
 }
